@@ -9,22 +9,30 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Intorduction
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+Hello. I am Murat Orhan.I am working as a Business Analyst at the Analysis Department at LC Waikiki in the current situation. I am interested in forecsting, operatin reasearch and statistical data analysis primarily.In my current job I can not have the opurtunity to analyze numeric data much. In my future job i want to get the chance to work at the data analysis department. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+## UseR-2018:What is R?
+Link:https://www.youtube.com/watch?v=XcBLEVknqvY
 
-```{r cars}
-summary(cars)
-```
+It explains what R is, where it started, how it developed, in which field R are being used currently and who users are.
 
-## Including Plots
+## First R Post:Tidy forecasting in R
+Link:https://www.youtube.com/watch?v=MemnYSGeJ34
 
-You can also embed plots, for example:
+This video is about the forecast packages and especially focusing on fable package which is a replacement for the Cran certified forecast package. First we seeing the chronological evolution of forecast packages and some examples solved by fable package like electricity demand and ARIMA formula model.The fable package can forecast multivariate time series and regeression models. Thus it is more consistent.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+## Second R Post:Statistical Inference: A Tidy Approach using R
+Link:https://www.youtube.com/watch?v=BCMjVc9ncFo
+
+This video is about how to make a statistical analysis by using test statistics pacakeges in R. Ýt explains the execution with an example. Firstly, data set is imported then the choice of the right statistics test (chi-square) made. Next step is creating hypothesis tests (null-alternative) and hypothesises are controlled which one is correct. At last data set is visualized according to chi-square result. Traditional graph and created one by R are similar.  
+
+
+## Third R Post:Helping R to be (even more) accurate
+Link:https://www.youtube.com/watch?v=3Bu7QUxzIbA
+
+This video is about the accurancy of R in the calculation transactions. R is accurate, because it has 16 digits, however many transaction is made double precision accuracy. So any cancellation transaction is losing all precision. Besides R has large math package and functions. It brings an advantage.
+
+
