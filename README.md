@@ -1,2 +1,2 @@
-# MUrat Orhan
+# Murat Orhan
 My assignment2 is loaded
