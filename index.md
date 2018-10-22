@@ -1,6 +1,6 @@
 ## Week 2
 
-My Rmarkdown homework was uploaded. 
-[Link] (file:///C:/Users/Murat/Desktop/assignment_2.html)
+ [Here](Assignment1.html) is my work on RMarkdown Assignment. 
+ 
 
 ## Week 1
