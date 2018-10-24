@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
 title: Murat Orhan Progress Journal
 description: BDA 503 - Data Analytics Essentials - MEF University
+exclude: ['*.Rmd']
