@@ -1,6 +1,6 @@
 ## Week 3
 
-TEST
+ODD Homework [Here](assignment_2.html) is uploaded. 
 
 ## Week 2
 
@@ -8,4 +8,4 @@ TEST
 
 ## Week 1
 
-Test
+I have created my Journal Page
