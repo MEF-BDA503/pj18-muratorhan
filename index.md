@@ -1,3 +1,6 @@
+## Week 3
+TEST
+
 ## Week 2
 
 [Here](assignment_2.html) is my work on RMarkdown Assignment.
