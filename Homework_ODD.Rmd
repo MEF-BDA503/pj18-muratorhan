@@ -1,0 +1,68 @@
+---
+title: "ODD_Assignment"
+author: "Murat Orhan"
+date: "30 Ekim 2018"
+output: html_document
+---
+
+
+```{r setup, include=FALSE, eval=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## ODD Homework - Car Sales Data Import
+
+### Downloading Raw Data
+
+```{r}
+# Create a temporary file
+tmp<-tempfile(fileext=".xlsx")
+# Download file from repository to the temp file
+download.file("https://github.com/MEF-BDA503/pj18-muratorhan/blob/master/odd_retail_sales_2016_06.xlsx?raw=true", destfile=tmp, mode='wb')
+# Read that excel file using readxl package's read_excel function. You might need to adjust the parameters (skip, col_names) according to your raw file's format.
+raw_data<-readxl::read_excel(tmp,skip=7,col_names=FALSE)
+# Remove the temp file
+file.remove(tmp)
+```
+
+#### [1] TRUE
+
+```{r}
+# Remove the last two rows because they are irrelevant (total and empty rows)
+library(tidyverse)
+
+raw_data <- raw_data %>% slice(-c(49,50))
+
+# Let's see our raw data
+head(raw_data)
+```
+
+### Making Data Civilized
+
+```{r}
+# Use the same column names in your data.
+colnames(raw_data) <- c("brand_name","auto_dom","auto_imp","auto_total","comm_dom","comm_imp","comm_total","total_dom","total_imp","total_total")
+# Now we replace NA values with 0 and label the time period with year and month, so when we merge the data we won't be confused.
+car_data_june_16 <- raw_data %>% mutate_if(is.numeric,funs(ifelse(is.na(.),0,.))) %>% mutate(year=2016,month=6)
+
+print(car_data_june_16,width=Inf)
+```
+
+### Saving Your Civilized Data
+
+```{r, eval=FALSE}
+saveRDS(car_data_june_16,file="~/C:\\Users\\Murat\\Desktop\\BIG DATA YL\\BDA 503 DATA ANALYTICS(R)\\W2\\ODD/odd_car_sales_data_june_16.rds")
+# You can read that file by readRDS and assigning to an object 
+# e.g 
+# rds_data <- readRDS("~/C:\Users\Murat\Desktop\BIG DATA YL\BDA 503 DATA ANALYTICS(R)\W2\ODD/odd_car_sales_data_june_16.rds")
+```
+
+### Finishing With Some Analysis
+
+```{r}
+car_data_june_16 %>% 
+  filter(auto_total > 0 & comm_total > 0) %>%
+  select(brand_name,total_total) %>%
+  arrange(desc(total_total))
+```
+
