@@ -1,6 +1,6 @@
 ## Week 3
 
-ODD Homework [Here](ODD_Homework.html) is uploaded. 
+ODD Homework [Here](Homework_ODD.html) is uploaded. 
 
 ## Week 2
 
