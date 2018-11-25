@@ -1,0 +1,84 @@
+---
+title: "ODD ASS P2"
+author: "Murat Orhan"
+date: "25 Kasım 2018"
+output: html_document
+---
+
+```{r}
+## Load tidyverse
+library(tidyverse)
+```
+
+```{r}
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(scales)
+```
+
+## Getting the .rds file
+Below the rds file is downloaded from github to a local data frame (raw_data) and refined for analysis
+
+```{r}
+#download from github 
+raw_data <- readRDS("C:/Users/Murat/Desktop/BIG DATA YL/BDA 503 DATA ANALYTICS(R)/W4/car_data_aggregate.rds")
+
+head(raw_data)
+```
+
+```{r}
+tail(raw_data)
+```
+
+## Making some correction on data
+```{r cars}
+#raw_data$brand_name <- str_replace(raw_data$brand_name,"ASTON MARTÄ°N","ASTON MARTIN") ## correction on strings
+
+dim(raw_data) # find out the index of latest row number
+```
+
+## Deleting the last row because of total value
+```{r}
+raw_data <- raw_data %>% slice(-c(1490))
+tail(raw_data)
+```
+
+## Removing dublicated brand names 
+```{r}
+raw_data %>%  
+filter(total_total>0 & comm_total>0) %>%
+distinct(sort(brand_name))
+```
+
+## Showing annual total sales amount of cars sorted by the most sold brand 
+```{r}
+raw_data %>% group_by(brand_name,year) %>% summarise(totalsales = sum(total_total)) %>% arrange(desc(totalsales))
+```
+
+## Let's get some visualization
+
+Comparing total annual automobile sales of BMW and AUDI;
+```{r}
+raw_data %>%
+  group_by(brand_name, year) %>% 
+  filter(brand_name %in% c("BMW", "AUDI")) %>%
+  summarize(yearly_auto_total = sum(auto_total))%>%
+  ggplot(data=., aes(x=year, y=yearly_auto_total, fill=brand_name)) +
+  geom_bar(stat="identity", position=position_dodge())+
+  labs(x="Years", y = "Number Of Sales", fill="Brands") +
+  theme_minimal()
+```
+
+Showing which brand sold at most in Turkey between 2016 and 2018
+```{r}
+summary <- raw_data %>% group_by(brand_name) %>% summarize(total_total=sum(total_total))
+   
+ggplot(summary,aes(x=reorder(brand_name,total_total),y=total_total))+
+coord_flip()+
+geom_col(fill="blue")+
+theme_bw()+
+theme(panel.grid.major=element_blank(),panel.grid.minor=element_blank(),text = element_text(size=14), axis.text.y=element_text(size=10))+
+scale_y_continuous(labels=comma)
+```
+
